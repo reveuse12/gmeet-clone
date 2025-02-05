@@ -41,7 +41,7 @@ export default function Page() {
       video={true}
       audio={true}
       token={token}
-      serverUrl={process.env.LIVEKIT_URL}
+      serverUrl={process.env.NEXT_PUBLIC_WEBSOCKET_URL}
       // Use the default LiveKit theme for nice styles.
       data-lk-theme="default"
       style={{ height: "100dvh" }}
