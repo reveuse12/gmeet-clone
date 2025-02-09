@@ -12,7 +12,12 @@ export async function GET(req: NextRequest) {
       { error: 'Missing "room" query parameter' },
       { status: 400 }
     );
-  } 
+  } else if (!username) {
+    return NextResponse.json(
+      { error: 'Missing "username" query parameter' },
+      { status: 400 }
+    );
+  }
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const apiSecret = process.env.NEXT_PUBLIC_SECRET_KEY;
@@ -25,11 +30,11 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const at = new AccessToken(apiKey, apiSecret, { identity: username ?? "Anonymous" });
+  const at = new AccessToken(apiKey, apiSecret, { identity: username });
   at.addGrant({ room, roomJoin: true, canPublish: true, canSubscribe: true });
 
   return NextResponse.json(
-    { token: await at.toJwt() , room},
+    { token: await at.toJwt() },
     { headers: { "Cache-Control": "no-store" } }
   );
 }
