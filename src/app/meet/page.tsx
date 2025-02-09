@@ -7,7 +7,7 @@ import {
   RoomAudioRenderer,
 } from "@livekit/components-react";
 import "@livekit/components-styles";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MyVideoConference } from "@/components/video";
 import axios from "axios";
 
@@ -37,7 +37,6 @@ export default function MeetPage() {
   const [isConnected, setIsConnected] = useState(false);
   const [joinCode, setJoinCode] = useState("");
   const [username, setUsername] = useState("");
-  const [isScreenSharing, setIsScreenSharing] = useState(false);
 
   const generateMeetingCode = async () => {
     if (!username.trim()) {
