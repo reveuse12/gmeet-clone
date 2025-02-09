@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export default function Page() {
+  
   return (
     <div className="min-h-screen bg-background font-sans antialiased">
       {/* Header */}
@@ -50,17 +51,18 @@ export default function Page() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg">
+              <Link href="/meet" className="mr-2 text-black flex items-center gap-2 p-2 bg-gray-200 rounded-md" >
                 <Video className="mr-2 h-4 w-4" />
-                New Meeting
-              </Button>
-              <Button size="lg" variant="outline">
-                Join Meeting
-              </Button>
+                New Meeting Or Join One
+              </Link>
+              <Link href="/chat" className="mr-2 text-black flex items-center gap-2 p-2 bg-gray-200 rounded-md" >
+                <Users className="mr-2 h-4 w-4" />
+                Join Chat Or Create One
+              </Link>
             </div>
           </div>
           <div className="mx-auto aspect-video overflow-hidden rounded-xl border bg-muted lg:order-last">
-            <Image alt="Hero" className="object-cover w-full" height="310" src="/placeholder.svg" width="550" />
+            <Image alt="Hero" className="object-cover w-full" height="310" src="/Gemini_Generated_Image_tl8d9qtl8d9qtl8d.jpg" width="550" />
           </div>
         </div>
       </section>
