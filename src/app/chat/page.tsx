@@ -17,9 +17,9 @@ export default function Page() {
 
     try {
       setIsCreating(true);
-      const { room: createdRoomName } = await createRoom(roomName);
+      const { room: createdRoomName, token } = await createRoom(roomName);
       console.log(createdRoomName); 
-      router.push(`/chat/${createdRoomName}`);
+      router.push(`/chat/${createdRoomName}?token=${token}`);
     } catch (error) {
       console.error("Failed to create room:", error);
     } finally {

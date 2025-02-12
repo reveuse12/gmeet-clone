@@ -26,6 +26,7 @@ export async function POST(req: Request) {
     });
 
     const token = at.toJwt();
+    console.log(token);
     return NextResponse.json({ token });
   } catch (error) {
     console.error('Error generating token:', error);

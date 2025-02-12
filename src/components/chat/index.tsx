@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Users } from "lucide-react"
 import { EmojiPicker } from "./emoji-picker"
 import { Message } from "./message"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
@@ -28,6 +27,7 @@ interface ChatSidebarProps {
 }
 
 export function ChatSidebar({ room }: ChatSidebarProps) {
+  console.log(room, "inside the chat");
   const [messages, setMessages] = useState<Message[]>([])
   const [newMessage, setNewMessage] = useState("")
   const scrollAreaRef = useRef<HTMLDivElement>(null)
@@ -37,13 +37,13 @@ export function ChatSidebar({ room }: ChatSidebarProps) {
     if (!room) return;
 
     const handleParticipantJoined = () => {
-      const participantNames = Array.from(room.participants.values()).map(p => p.identity);
+      const participantNames = Array.from(room.remoteParticipants.values()).map(p => p.identity);
       participantNames.push(room.localParticipant.identity);
       setParticipants(participantNames);
     };
 
     const handleParticipantLeft = () => {
-      const participantNames = Array.from(room.participants.values()).map(p => p.identity);
+      const participantNames = Array.from(room.remoteParticipants.values()).map(p => p.identity);
       participantNames.push(room.localParticipant.identity);
       setParticipants(participantNames);
     };
